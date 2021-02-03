@@ -36,8 +36,8 @@
 #include "atca_device.h"
 #include "atca_command.h"
 #include "atca_cfgs.h"
-#include "basic/atca_basic.h"
-#include "basic/atca_helpers.h"
+#include "basic\atca_basic.h"
+#include "basic\atca_helpers.h"
 
 #ifdef ATCAPRINTF
     #include <stdio.h>

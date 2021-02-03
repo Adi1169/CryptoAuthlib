@@ -27,7 +27,7 @@
 
 #include "atca_hal.h"
 
-#include "FreeRTOS.h"
+//#include "FreeRTOS.h"
 #include "semphr.h"
 #include "task.h"
 

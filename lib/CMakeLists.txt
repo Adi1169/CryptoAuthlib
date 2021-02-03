@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.1.0)
-project(cryptoauth)
+cmake_minimum_required(VERSION 3.6)
 
 # Various Options for Build
-option(ATCA_HAL_KIT_HID "Include the HID HAL Driver")
-option(ATCA_HAL_I2C "Include the I2C Hal Driver - Linux & MCU only")
+option(ATCA_HAL_KIT_HID "Include the HID HAL Driver" )
+option(ATCA_HAL_I2C "Include the I2C Hal Driver - Linux & MCU only" )
 option(ATCA_HAL_CUSTOM "Include support for Custom/Plug-in Hal Driver")
 option(ATCA_PRINTF "Enable Debug print statements in library")
 option(ATCA_PKCS11 "Build PKCS11 Library")
@@ -22,8 +21,16 @@ file(GLOB PKCS11_SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "pkcs11/*.c")
 file(GLOB MBEDTLS_SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "mbedtls/*.c")
 file(GLOB TNG_SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "../app/tng/*.c")
 
+
+
 # Add the basic sources to the library
-set(CRYPTOAUTH_SRC ${LIB_SRC} ${ATCACERT_SRC} ${BASIC_SRC} ${CRYPTO_SRC} ${HOST_SRC} ${JWT_SRC} hal/atca_hal.c ${TNG_SRC})
+set(CRYPTOAUTH_SRC ${LIB_SRC} ${ATCACERT_SRC} ${BASIC_SRC} ${CRYPTO_SRC} ${HOST_SRC} ${JWT_SRC} hal/atca_hal.c hal/hal_timer_start.c ${TNG_SRC})
+
+include_directories("../../../toolchains/nRF5/nRF5_SDK_16.0.0_98a08e2")
+
+add_library(cryptoauthlib
+    ${CRYPTOAUTH_SRC}
+  )
 
 if(WIN32)
 set(CRYPTOAUTH_SRC ${CRYPTOAUTH_SRC} hal/hal_win_timer.c)
@@ -77,9 +84,8 @@ if(ATCA_PKCS11)
 set(CRYPTOAUTH_SRC ${CRYPTOAUTH_SRC} ${PKCS11_SRC})
 endif()
 
-add_library(cryptoauth ${CRYPTOAUTH_SRC} ${ATCACERT_DEF_SRC})
 
-set_property(TARGET cryptoauth PROPERTY C_STANDARD 99)
+
 
 # Add Remaining Sources depending on target library type
 if(ATCA_PKCS11)

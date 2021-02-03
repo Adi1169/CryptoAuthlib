@@ -14,8 +14,8 @@
  */
 
 #include "atca_hal.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
+// #include "freertos/FreeRTOS.h"
+// #include "freertos/task.h"
 
 extern void ets_delay_us(uint32_t);
 

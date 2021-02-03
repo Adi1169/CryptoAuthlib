@@ -26,7 +26,7 @@
  * THIS SOFTWARE.
  */
 
-#include <plib.h>
+//#include <plib.h>
 
 #include "hal/atca_hal.h"
 
@@ -47,10 +47,10 @@
 #define us_SCALE   ((CPU_CLOCK / 2) / 1000000)
 
 
-void delay_us(UINT32 delay)
+void delay_us(uint32_t delay)
 {
-    UINT32 startCnt = ReadCoreTimer();
-    UINT32 waitCnt = delay * us_SCALE;
+    uint32_t startCnt = ReadCoreTimer();
+    uint32_t waitCnt = delay * us_SCALE;
 
     while ((ReadCoreTimer() - startCnt) < waitCnt)
     {
