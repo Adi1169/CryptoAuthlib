@@ -27,7 +27,7 @@
  * THIS SOFTWARE.
  */
 
-#include <nrf_delay.h>
+#include "..\..\..\ndelay.h"
 #include "atca_hal.h"
 
 /** \defgroup hal_ Hardware abstraction layer (hal_)
@@ -46,7 +46,7 @@
 void atca_delay_us(uint32_t delay)
 {
     // use START supplied delay
-    nrf_delay_us(delay);
+    ndelay_us(delay);
 }
 
 /** \brief This function delays for a number of tens of microseconds.
@@ -57,7 +57,7 @@ void atca_delay_us(uint32_t delay)
 void atca_delay_10us(uint32_t delay)
 {
     // use START supplied delay
-    nrf_delay_us(delay * 10);
+    ndelay_us(delay*10);
 }
 
 /** \brief This function delays for a number of milliseconds.
@@ -70,7 +70,7 @@ void atca_delay_10us(uint32_t delay)
 void atca_delay_ms(uint32_t delay)
 {
     // use START supplied delay
-    nrf_delay_us(delay);
+    ndelay_ms(delay);
 }
 
 /** @} */

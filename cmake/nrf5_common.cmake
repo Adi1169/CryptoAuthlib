@@ -21,7 +21,7 @@
 # SOFTWARE.
 #
 # WARNING: FILE GENERATED FROM ./ci/scripts/generate_cmake.sh SCRIPT.
-
+set(NRF5_SDK_PATH "D:/Intern/Atecc/Newfolder/nRF5-cmake-scripts-example-base/toolchains/nRF5/nRF5_SDK_16.0.0_98a08e2")
 # Delay
 add_library(nrf5_delay INTERFACE)
 target_include_directories(nrf5_delay INTERFACE

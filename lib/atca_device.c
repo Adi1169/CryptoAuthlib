@@ -27,7 +27,7 @@
 
 #include <stdlib.h>
 #include "atca_device.h"
-#include "nrf_log.h"
+
 
 /** \defgroup device ATCADevice (atca_)
  * \brief ATCADevice object - composite of command and interface objects

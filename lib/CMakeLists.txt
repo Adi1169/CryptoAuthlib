@@ -23,14 +23,30 @@ file(GLOB TNG_SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "../app/tng/*.c")
 
 
 
+
 # Add the basic sources to the library
 set(CRYPTOAUTH_SRC ${LIB_SRC} ${ATCACERT_SRC} ${BASIC_SRC} ${CRYPTO_SRC} ${HOST_SRC} ${JWT_SRC} hal/atca_hal.c hal/hal_timer_start.c ${TNG_SRC})
-
-include_directories("../../../toolchains/nRF5/nRF5_SDK_16.0.0_98a08e2")
-
+include("D:/Intern/Atecc/Newfolder/nRF5-cmake-scripts-example-base/nRF5-cmake-scripts/nRF5-cmake.cmake")
+nRF5_addLog()
+nRF5_addSeggerRTT()
+nRF5_addAppError()
+nRF5_addAppScheduler()
+nRF5_addAppFIFO()
+nRF5_addAppTimer()
+nRF5_addAppUART()
+nRF5_addAppButton()
+nRF5_addPowerMgmt()
+nRF5_addBSP(TRUE FALSE FALSE)
+nRF5_addBLEGATT()
+nRF5_addBLEQWR()
+nRF5_addBLEService(ble_lbs)
+    
 add_library(cryptoauthlib
     ${CRYPTOAUTH_SRC}
   )
+
+# add the required libraries for this example
+
 
 if(WIN32)
 set(CRYPTOAUTH_SRC ${CRYPTOAUTH_SRC} hal/hal_win_timer.c)
